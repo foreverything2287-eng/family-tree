@@ -2,58 +2,82 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>Семейное древо</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Семейное древо Софии</title>
 
 <style>
 
 body{
     margin:0;
-    font-family:Arial,sans-serif;
-    background:#f5f5f5;
+    background:#f6f4ef;
+    font-family:system-ui,sans-serif;
 }
 
 h1{
     text-align:center;
-    margin-top:30px;
+    margin-top:40px;
 }
 
 .tree{
     display:flex;
     justify-content:center;
-    margin-top:80px;
+    margin-top:120px;
 }
 
 .person{
-    background:white;
-    padding:20px;
-    border-radius:16px;
-    box-shadow:0 4px 15px rgba(0,0,0,.15);
     position:relative;
+
+    background:white;
+    padding:20px 24px;
+
+    border-radius:18px;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.08);
+
     cursor:pointer;
+
     transition:.2s;
 }
 
 .person:hover{
-    transform:translateY(-3px);
+    transform:translateY(-4px);
+}
+
+.person-name{
+    font-size:20px;
+    font-weight:600;
 }
 
 .tooltip{
+
     display:none;
+
     position:absolute;
-    top:-120px;
+
     left:50%;
+    top:-140px;
+
     transform:translateX(-50%);
-    width:220px;
+
+    width:250px;
 
     background:white;
-    padding:12px;
-    border-radius:12px;
 
-    box-shadow:0 4px 15px rgba(0,0,0,.2);
+    border-radius:16px;
+
+    padding:15px;
+
+    box-shadow:
+      0 12px 35px rgba(0,0,0,.18);
 }
 
 .person:hover .tooltip{
     display:block;
+}
+
+.tooltip h3{
+    margin:0 0 10px;
 }
 
 a{
@@ -70,17 +94,23 @@ a{
 
 <div class="tree">
 
-<a href="sofia.html">
+<a href="#">
 
 <div class="person">
 
+<div class="person-name">
 София Орновскис
+</div>
 
 <div class="tooltip">
 
-<b>София Орновскис</b><br>
-18.11.2009<br>
-Эстония
+<h3>София Орновскис</h3>
+
+<p>Дата рождения: 18.11.2009</p>
+
+<p>Страна: Эстония</p>
+
+<p>Мать: Екатерина Орновскис</p>
 
 </div>
 
