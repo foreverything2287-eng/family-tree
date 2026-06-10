@@ -1,13 +1,94 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-  <title>Моё семейное древо</title>
-</head>
-<body>
-  <h1>Семейное древо</h1>
+<meta charset="UTF-8">
+<title>Семейное древо</title>
 
-  <p title="1920–1990, дедушка">Иван Петров</p>
-  <p title="1925–2005, бабушка">Мария Петрова</p>
+<style>
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f5f5f5;
+}
+
+h1{
+    text-align:center;
+    margin-top:30px;
+}
+
+.tree{
+    display:flex;
+    justify-content:center;
+    margin-top:80px;
+}
+
+.person{
+    background:white;
+    padding:20px;
+    border-radius:16px;
+    box-shadow:0 4px 15px rgba(0,0,0,.15);
+    position:relative;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.person:hover{
+    transform:translateY(-3px);
+}
+
+.tooltip{
+    display:none;
+    position:absolute;
+    top:-120px;
+    left:50%;
+    transform:translateX(-50%);
+    width:220px;
+
+    background:white;
+    padding:12px;
+    border-radius:12px;
+
+    box-shadow:0 4px 15px rgba(0,0,0,.2);
+}
+
+.person:hover .tooltip{
+    display:block;
+}
+
+a{
+    text-decoration:none;
+    color:black;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Семейное древо Софии</h1>
+
+<div class="tree">
+
+<a href="sofia.html">
+
+<div class="person">
+
+София Орновскис
+
+<div class="tooltip">
+
+<b>София Орновскис</b><br>
+18.11.2009<br>
+Эстония
+
+</div>
+
+</div>
+
+</a>
+
+</div>
 
 </body>
 </html>
