@@ -191,6 +191,8 @@ let x=window.innerWidth/2;
 
 let y=window.innerHeight*0.35;
 
+let scale=1;
+
 let startX=0;
 
 let startY=0;
@@ -223,6 +225,46 @@ tree.style.left=x+"px";
 
 tree.style.top=y+"px";
 
+function updateTree(){
+
+updateTree();
+
+tree.style.transform=
+`translate(-50%,-50%)
+ scale(${scale})`;
+
+}
+
+document.addEventListener("wheel",(e)=>{
+
+e.preventDefault();
+
+if(e.deltaY>0){
+
+scale-=0.1;
+
+}
+
+else{
+
+scale+=0.1;
+
+}
+
+scale=
+Math.max(
+0.4,
+Math.min(
+3,
+scale
+)
+);
+
+updateTree();
+
+});
+
+updateTree();
 });
 
 </script>
