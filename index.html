@@ -10,16 +10,33 @@
 <style>
 
 body{
-
 margin:0;
-
+overflow:hidden;
 background:#f8f5f0;
-
 font-family:system-ui;
+}
+
+/* область просмотра */
+
+.viewport{
+
+width:100vw;
+height:100vh;
+
+overflow:hidden;
+
+cursor:grab;
 
 }
 
+/* само дерево */
+
 .tree{
+
+position:absolute;
+
+left:50vw;
+top:35vh;
 
 display:flex;
 
@@ -27,17 +44,15 @@ flex-direction:column;
 
 align-items:center;
 
-padding-top:80px;
-
 }
 
-/* карточка */
+/* карточки */
 
 .person{
 
 background:white;
 
-padding:18px 24px;
+padding:18px 26px;
 
 border-radius:20px;
 
@@ -46,15 +61,13 @@ box-shadow:
 
 position:relative;
 
-cursor:pointer;
-
-transition:.2s;
-
 }
 
-.person:hover{
+.name{
 
-transform:translateY(-3px);
+font-size:22px;
+
+font-weight:600;
 
 }
 
@@ -64,13 +77,13 @@ transform:translateY(-3px);
 
 width:2px;
 
-height:100px;
+height:110px;
 
 background:#b9b2aa;
 
 }
 
-/* всплывашка */
+/* карточка инфы */
 
 .tooltip{
 
@@ -88,7 +101,7 @@ background:white;
 
 padding:16px;
 
-width:240px;
+width:230px;
 
 border-radius:16px;
 
@@ -103,21 +116,15 @@ display:block;
 
 }
 
-.name{
-
-font-size:22px;
-
-font-weight:600;
-
-}
-
 </style>
 
 </head>
 
 <body>
 
-<div class="tree">
+<div class="viewport">
+
+<div class="tree" id="tree">
 
 <div class="person">
 
@@ -170,6 +177,55 @@ font-weight:600;
 </div>
 
 </div>
+
+</div>
+
+<script>
+
+const tree =
+document.getElementById("tree");
+
+let move=false;
+
+let x=window.innerWidth/2;
+
+let y=window.innerHeight*0.35;
+
+let startX=0;
+
+let startY=0;
+
+document.addEventListener("mousedown",(e)=>{
+
+move=true;
+
+startX=e.clientX-x;
+
+startY=e.clientY-y;
+
+});
+
+document.addEventListener("mouseup",()=>{
+
+move=false;
+
+});
+
+document.addEventListener("mousemove",(e)=>{
+
+if(!move)return;
+
+x=e.clientX-startX;
+
+y=e.clientY-startY;
+
+tree.style.left=x+"px";
+
+tree.style.top=y+"px";
+
+});
+
+</script>
 
 </body>
 
