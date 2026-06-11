@@ -2,8 +2,8 @@
 <html lang="ru">
 
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Семейное древо Софии</title>
 
@@ -16,27 +16,21 @@ background:#f8f5f0;
 font-family:system-ui;
 }
 
-/* область просмотра */
-
 .viewport{
-
 width:100vw;
 height:100vh;
-
 overflow:hidden;
-
-cursor:grab;
-
 }
-
-/* само дерево */
 
 .tree{
 
 position:absolute;
 
-left:50vw;
-top:35vh;
+left:50%;
+top:50%;
+
+transform:
+translate(-50%,-50%);
 
 display:flex;
 
@@ -52,7 +46,7 @@ align-items:center;
 
 background:white;
 
-padding:18px 26px;
+padding:20px 28px;
 
 border-radius:20px;
 
@@ -60,6 +54,17 @@ box-shadow:
 0 10px 30px rgba(0,0,0,.08);
 
 position:relative;
+
+cursor:pointer;
+
+transition:.2s;
+
+}
+
+.person:hover{
+
+transform:
+translateY(-4px);
 
 }
 
@@ -77,13 +82,13 @@ font-weight:600;
 
 width:2px;
 
-height:110px;
+height:120px;
 
-background:#b9b2aa;
+background:#b7aea4;
 
 }
 
-/* карточка инфы */
+/* всплывашка */
 
 .tooltip{
 
@@ -95,13 +100,14 @@ bottom:120%;
 
 left:50%;
 
-transform:translateX(-50%);
+transform:
+translateX(-50%);
+
+width:250px;
 
 background:white;
 
 padding:16px;
-
-width:230px;
 
 border-radius:16px;
 
@@ -124,7 +130,9 @@ display:block;
 
 <div class="viewport">
 
-<div class="tree" id="tree">
+<div
+class="tree"
+id="tree">
 
 <div class="person">
 
@@ -135,10 +143,6 @@ display:block;
 </div>
 
 <div class="tooltip">
-
-<b>Екатерина Орновскис</b>
-
-<br><br>
 
 род. 16.10.1983
 
@@ -162,10 +166,6 @@ display:block;
 
 <div class="tooltip">
 
-<b>София Орновскис</b>
-
-<br><br>
-
 род. 18.11.2009
 
 <br>
@@ -181,36 +181,38 @@ display:block;
 </div>
 
 <script>
-<script>
 
 const tree =
-document.getElementById("tree");
+document.getElementById(
+"tree"
+);
 
-let move = false;
+let x=0;
 
-let x =
-window.innerWidth / 2;
+let y=0;
 
-let y =
-window.innerHeight * 0.45;
+let scale=1;
 
-let scale = 1;
+let dragging=false;
 
-let startX = 0;
+let startX=0;
 
-let startY = 0;
+let startY=0;
 
-function update(){
+function draw(){
 
-tree.style.left =
-x + "px";
+tree.style.transform=
 
-tree.style.top =
-y + "px";
+`
+translate(
+${x}px,
+${y}px
+)
 
-tree.style.transform =
-`translate(-50%,-50%)
- scale(${scale})`;
+scale(
+${scale}
+)
+`;
 
 }
 
@@ -218,13 +220,13 @@ document.addEventListener(
 "mousedown",
 (e)=>{
 
-move=true;
+dragging=true;
 
 startX=
-e.clientX-x;
+e.clientX;
 
 startY=
-e.clientY-y;
+e.clientY;
 
 }
 );
@@ -233,7 +235,7 @@ document.addEventListener(
 "mouseup",
 ()=>{
 
-move=false;
+dragging=false;
 
 }
 );
@@ -242,18 +244,25 @@ document.addEventListener(
 "mousemove",
 (e)=>{
 
-if(!move)
-return;
+if(
+!dragging
+)return;
 
-x=
+x+=
 e.clientX-
 startX;
 
-y=
+y+=
 e.clientY-
 startY;
 
-update();
+startX=
+e.clientX;
+
+startY=
+e.clientY;
+
+draw();
 
 }
 );
@@ -282,12 +291,12 @@ scale=
 Math.max(
 0.5,
 Math.min(
-3,
+2.5,
 scale
 )
 );
 
-update();
+draw();
 
 },
 {
@@ -295,9 +304,8 @@ passive:false
 }
 );
 
-update();
+draw();
 
-</script>
 </script>
 
 </body>
