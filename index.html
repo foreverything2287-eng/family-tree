@@ -1,170 +1,146 @@
 <!DOCTYPE html>
+
 <html lang="ru">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Семейное древо Софии</title>
+
+<title>Семейное древо</title>
 
 <style>
 
 body{
-    margin:0;
-    background:#f6f4ef;
-    font-family:system-ui,sans-serif;
+margin:0;
+background:#f7f4ef;
+font-family:system-ui;
+overflow:hidden;
 }
 
-h1{
-    text-align:center;
-    margin-top:40px;
-}
+#tree{
 
-.tree{
-    display:flex;
-    justify-content:center;
-    margin-top:120px;
+width:3000px;
+
+height:3000px;
+
+position:relative;
 }
 
 .person{
-    position:relative;
 
-    background:white;
-    padding:20px 24px;
+position:absolute;
 
-    border-radius:18px;
+background:white;
 
-    box-shadow:
-        0 10px 30px rgba(0,0,0,.08);
+padding:16px;
 
-    cursor:pointer;
+border-radius:18px;
 
-    transition:.2s;
+box-shadow:
+0 10px 30px rgba(0,0,0,.1);
+
+cursor:pointer;
+
+transition:.2s;
 }
 
 .person:hover{
-    transform:translateY(-4px);
-}
 
-.person-name{
-    font-size:20px;
-    font-weight:600;
+transform:scale(1.03);
+
 }
 
 .tooltip{
 
-    display:none;
+display:none;
 
-    position:absolute;
+position:absolute;
 
-    left:50%;
-    top:-140px;
+top:-120px;
 
-    transform:translateX(-50%);
+left:50%;
 
-    width:250px;
+transform:translateX(-50%);
 
-    background:white;
+background:white;
 
-    border-radius:16px;
+padding:12px;
 
-    padding:15px;
+width:240px;
 
-    box-shadow:
-      0 12px 35px rgba(0,0,0,.18);
+border-radius:14px;
+
+box-shadow:
+0 10px 25px rgba(0,0,0,.18);
+
 }
 
 .person:hover .tooltip{
-    display:block;
-}
 
-.tooltip h3{
-    margin:0 0 10px;
-}
+display:block;
 
-a{
-    text-decoration:none;
-    color:black;
 }
 
 </style>
+
 </head>
 
 <body>
 
-<h1>Семейное древо Софии</h1>
+<div id="tree"></div>
 
-<div class="tree">
+<script src="people.js"></script>
 
-<div style="display:flex; flex-direction:column; gap:80px; align-items:center;">
+<script>
 
-<div class="person">
+const tree =
+document.getElementById("tree");
 
-<div class="person-name">
-Екатерина Орновскис
-</div>
+people.forEach(person=>{
 
-<div class="tooltip">
+const card =
+document.createElement("div");
 
-<h3>Екатерина Орновскис</h3>
+card.className=
+"person";
 
-<p>Дата рождения: 16.10.1983</p>
+card.style.left=
+person.x+"px";
 
-<p>Страна: Эстония</p>
+card.style.top=
+person.y+"px";
 
-<p>Мать: Лидия Иванищева</p>
+card.innerHTML=
 
-<p>Отец: Николай Иванищев</p>
+`
+<div>
 
-</div>
-
-</div>
-
-<div style="font-size:40px;">
-│
-</div>
-
-<div class="person">
-
-<div class="person-name">
-София Орновскис
-</div>
+${person.name}
 
 <div class="tooltip">
 
-<h3>София Орновскис</h3>
+<b>${person.name}</b>
 
-<p>Дата рождения: 18.11.2009</p>
+<br><br>
 
-<p>Страна: Эстония</p>
+род.
+${person.birth}
 
-<p>Мать: Екатерина Орновскис</p>
+<br>
 
-<p>Отец: Михаилас Орновскис</p>
-
-</div>
-
-</div>
+${person.country}
 
 </div>
 
 </div>
+`;
 
-<div class="tooltip">
+tree.append(card);
 
-<h3>София Орновскис</h3>
+});
 
-<p>Дата рождения: 18.11.2009</p>
-
-<p>Страна: Эстония</p>
-
-<p>Мать: Екатерина Орновскис</p>
-
-</div>
-
-</div>
-
-</a>
-
-</div>
+</script>
 
 </body>
+
 </html>
