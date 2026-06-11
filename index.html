@@ -1,54 +1,76 @@
 <!DOCTYPE html>
-
 <html lang="ru">
 
 <head>
 
 <meta charset="UTF-8">
 
-<title>Семейное древо</title>
+<title>Семейное древо Софии</title>
 
 <style>
 
 body{
+
 margin:0;
-background:#f7f4ef;
+
+background:#f8f5f0;
+
 font-family:system-ui;
-overflow:hidden;
+
 }
 
-#tree{
+.tree{
 
-width:3000px;
+display:flex;
 
-height:3000px;
+flex-direction:column;
 
-position:relative;
+align-items:center;
+
+padding-top:80px;
+
 }
+
+/* карточка */
 
 .person{
 
-position:absolute;
-
 background:white;
 
-padding:16px;
+padding:18px 24px;
 
-border-radius:18px;
+border-radius:20px;
 
 box-shadow:
-0 10px 30px rgba(0,0,0,.1);
+0 10px 30px rgba(0,0,0,.08);
+
+position:relative;
 
 cursor:pointer;
 
 transition:.2s;
+
 }
 
 .person:hover{
 
-transform:scale(1.03);
+transform:translateY(-3px);
 
 }
+
+/* линия */
+
+.line{
+
+width:2px;
+
+height:100px;
+
+background:#b9b2aa;
+
+}
+
+/* всплывашка */
 
 .tooltip{
 
@@ -56,7 +78,7 @@ display:none;
 
 position:absolute;
 
-top:-120px;
+bottom:120%;
 
 left:50%;
 
@@ -64,14 +86,14 @@ transform:translateX(-50%);
 
 background:white;
 
-padding:12px;
+padding:16px;
 
 width:240px;
 
-border-radius:14px;
+border-radius:16px;
 
 box-shadow:
-0 10px 25px rgba(0,0,0,.18);
+0 10px 30px rgba(0,0,0,.18);
 
 }
 
@@ -81,65 +103,73 @@ display:block;
 
 }
 
+.name{
+
+font-size:22px;
+
+font-weight:600;
+
+}
+
 </style>
 
 </head>
 
 <body>
 
-<div id="tree"></div>
+<div class="tree">
 
-<script src="people.js"></script>
+<div class="person">
 
-<script>
+<div class="name">
 
-const tree =
-document.getElementById("tree");
+Екатерина Орновскис
 
-people.forEach(person=>{
-
-const card =
-document.createElement("div");
-
-card.className=
-"person";
-
-card.style.left=
-person.x+"px";
-
-card.style.top=
-person.y+"px";
-
-card.innerHTML=
-
-`
-<div>
-
-${person.name}
+</div>
 
 <div class="tooltip">
 
-<b>${person.name}</b>
+<b>Екатерина Орновскис</b>
 
 <br><br>
 
-род.
-${person.birth}
+род. 16.10.1983
 
 <br>
 
-${person.country}
+Эстония
 
 </div>
 
 </div>
-`;
 
-tree.append(card);
+<div class="line"></div>
 
-});
+<div class="person">
 
-</script>
+<div class="name">
+
+София Орновскис
+
+</div>
+
+<div class="tooltip">
+
+<b>София Орновскис</b>
+
+<br><br>
+
+род. 18.11.2009
+
+<br>
+
+Эстония
+
+</div>
+
+</div>
+
+</div>
 
 </body>
 
